@@ -17,6 +17,11 @@ bot.command(:eval, help_available: false, permission_message: false, permission_
   end
 end
 
+bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
+  bot.send_message(event.channel.id, ':wave::skin-tone-1:')
+  exit
+end
+
 bot.command(:ping, help_available: false, max_args: 0, permission_message: false, permission_level: 1) do |event|
   m = event.respond('Pinging!')
   m.edit "Pong! Hey, that took #{((Time.now - event.timestamp) * 1000).to_i}ms."
