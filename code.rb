@@ -8,7 +8,6 @@ bot.set_user_permission(228290433057292288, 1)
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
-    event.message.delete
     eval code.join(' ')
   rescue => e
     event << "Ah geez, something went wrong, it says:"
@@ -33,6 +32,14 @@ end
 
 bot.command(:say, help_available: false, permission_message: false, permission_level: 1, min_args: 0) do |event|
   event.respond ["Uh, don't you think a say command for a selfbot is a bit redundant?", "Uh, why do you need this, dude?", "If you want to say something, do it yourself"].sample
+end
+
+bot.command(:cmds, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
+  event << "cah!eval: Do stuff"
+  event << "cah!die: Kill urself"
+  event << "cah!ping: You alive bro?"
+  event << "cah!servercount: How high can you go?"
+  event << "cah!say: Isn't this redundant for a selfbot?"
 end
 
 #whatever I'll finish it later
