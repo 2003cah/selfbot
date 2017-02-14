@@ -8,11 +8,11 @@ bot.set_user_permission(228290433057292288, 1)
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
-    event.message.edit "The results are in!
+    event.message.edit "The results are in! It did what it was supposed to do...
 
-    #{eval code.join(' ')}"
+```#{eval code.join(' ')}```"
   rescue => e
-    event.message.edit "The results are in! ```#{e}```"
+    event.message.edit "The results are in! It didn't go well... ```#{e}```"
   end
 end
 
@@ -23,7 +23,7 @@ end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
   begin
-    event.message.edit("Restarting selfbot...")
+    event.message.edit ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
     sleep 0.5
     exec("bash restart.sh")
   end
@@ -39,7 +39,7 @@ bot.command([:servercount, :servcount], help_available: false, max_args: 0, perm
 end
 
 bot.command(:say, help_available: false, permission_message: false, permission_level: 1, min_args: 0) do |event|
-  event.message.edit ["Uh, don't you think a say command for a selfbot is a bit redundant?", "Uh, why do you need this, dude?", "If you want to say something, do it yourself"].sample
+  event.message.edit ["Uh, don't you think a say command for a selfbot is a bit redundant?", "Uh, why do you need this, dude?", "If you want to say something, do it yourself", "[joke about how `say` commands in selfbots are dumb]"].sample
 end
 
 bot.command(:cmds, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
@@ -50,7 +50,7 @@ bot.command(:cmds, help_available: false, permission_message: false, permission_
   event << "cah!say: Isn't this redundant for a selfbot?"
   event << "cah!restart: Something new."
   event << ""
-  event << "For any bystanders who saw this, yes, I did make this somewhat from scratch ~~(I did however take some code from my own bot :CLAP:)~~"
+  event << "For any bystanders who saw this, yes, I did make this somewhat from scratch ~~(I did however take some code from my own bot <:CLAP:267372593483350016>)~~"
 end
 
 # whatever I'll finish it later
