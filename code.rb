@@ -8,7 +8,8 @@ bot.set_user_permission(228290433057292288, 1)
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
-    eval code.join(' ')
+    eval code.join(' ') => w
+    event.message.edit "#{w}"
   rescue => e
     event.message.edit "Cah tried `#{code.join}` and it ended in... ```#{e}```"
   end
@@ -21,7 +22,7 @@ end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
   begin
-    event.message.edit "Restarting selfbot..."
+    event.message.edit("Restarting selfbot...")
     sleep 0.5
     exec("bash restart.sh")
   end
