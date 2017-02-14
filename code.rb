@@ -8,9 +8,11 @@ bot.set_user_permission(228290433057292288, 1)
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
-    event.message.edit "#{eval code.join(' ')}"
+    event.message.edit "The results are in!
+
+    #{eval code.join(' ')}"
   rescue => e
-    event.message.edit "Cah tried `#{code.join}` and it ended in... ```#{e}```"
+    event.message.edit "The results are in! ```#{e}```"
   end
 end
 
