@@ -7,9 +7,8 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 bot.set_user_permission(228290433057292288, 1)
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
-  begin => w
-    eval code.join(' ')
-    event.message.edit "#{w}"
+  begin
+    event.message.edit "#{eval code.join(' ')}"
   rescue => e
     event.message.edit "Cah tried `#{code.join}` and it ended in... ```#{e}```"
   end
