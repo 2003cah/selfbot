@@ -15,6 +15,14 @@ bot.command(:eval, help_available: false, permission_message: false, permission_
   end
 end
 
+bot.command(:test, help_available: false, permission_message: false, permission_level: 1) do |event|
+  event.channel.send_embed do |embed|
+    embed.title = 'woah'
+    embed.description = 'dude'
+    embed.color = 11736341
+  end
+end
+
 bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
   bot.send_message(event.channel.id, ':wave::skin-tone-1:')
   exit
