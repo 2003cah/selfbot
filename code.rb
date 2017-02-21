@@ -29,6 +29,12 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     when 'game'
       bot.game = "#{args.join(' ')}"
       event.message.edit "Game set to: `#{args.join(' ')}`"
+    when 'status'
+      online = bot.on
+      idle = bot.idle
+      invis = bot.invisible
+      dnd = bot.dnd
+      event.message.edit args.join(' ')
     else
       event.message.edit "Cah did his own command wrong smh"
     end
