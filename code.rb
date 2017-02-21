@@ -1,5 +1,6 @@
 require 'discordrb'
 require 'configatron'
+require 'open-url'
 require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: 'cah!', advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
@@ -18,6 +19,19 @@ Output:
 Output:
 ```#{e}```"
   end
+end
+
+bot.command(:set, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
+  case action
+    when 'avatar'
+      open("#{args.join(' ')}") { |pic| event.bot.profile.avatar = pic }
+      event.message.edit "Avatar changed!"
+    when 'game'
+      bot.game = "#{args.join(' ')}"
+      event.message.edit "Game set to: `#{args.join(' ')}`"
+    else
+      event.message.edit "Cah did his own command wrong smh"
+    end
 end
 
 bot.command(:test, help_available: false, permission_message: false, permission_level: 1) do |event|
