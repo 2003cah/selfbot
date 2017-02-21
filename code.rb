@@ -13,7 +13,7 @@ bot.command(:eval, help_available: false, permission_message: false, permission_
 Output:
 ```#{eval code.join(' ')}```"
   rescue => e
-    event.message.edit "Input: `#{code.join}` 
+    event.message.edit "Input: `#{code.join(' ')}` 
 
 Output:
 ```#{e}```"
