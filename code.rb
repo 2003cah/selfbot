@@ -34,7 +34,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
       idle = bot.idle
       invis = bot.invisible
       dnd = bot.dnd
-      event.message.edit args.join(' ')
+      args.join(' ')
     else
       event.message.edit "Cah did his own command wrong smh"
     end
