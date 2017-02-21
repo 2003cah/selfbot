@@ -1,6 +1,6 @@
 require 'discordrb'
 require 'configatron'
-require 'open-url'
+require 'open-uri'
 require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: 'cah!', advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
