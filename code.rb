@@ -42,9 +42,8 @@ end
 
 bot.command(:test, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   event.channel.send_embed do |embed|
-    embed.description = "***Cah*** *#{args.join(' ')}*"
-    embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286, 3306856, 9414906, 3717172, 14715195, 3813410, 9899000, 16047888, 4329932, 12906212].sample
-    event.message.edit "#{embed}"
+    event.message.edit "#{embed.description = "***Cah*** *#{args.join(' ')}*"
+    embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286, 3306856, 9414906, 3717172, 14715195, 3813410, 9899000, 16047888, 4329932, 12906212].sample}"
   end
 end
 
