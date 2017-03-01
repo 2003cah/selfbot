@@ -23,11 +23,7 @@ end
 
 bot.ready do |event|
   bot.game = 'woahdude'
-  sleep 120
-  bot.game = 'aaaaaaa'
-  sleep 120
-  redo
-end 
+end
 
 bot.command(:set, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
   case action
