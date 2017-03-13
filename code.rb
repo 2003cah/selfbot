@@ -21,6 +21,10 @@ Output:
   end
 end
 
+bot.ready do |event|
+  bot.game = 'woahdude'
+end
+
 bot.command(:set, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
   case action
     when 'avatar'
