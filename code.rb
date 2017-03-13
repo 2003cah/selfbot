@@ -92,6 +92,24 @@ bot.command(:say, help_available: false, permission_message: false, permission_l
   event.message.edit ["Uh, don't you think a say command for a selfbot is a bit redundant?", "Uh, why do you need this, dude?", "If you want to say something, do it yourself", "[joke about how `say` commands in selfbots are dumb]"].sample
 end
 
+bot.command(:quote, help_available: false, permission_message: false, permission_level: 1) do |event, *id|
+  msg_content = event.channel.history(2, nil, id.join - 1).last.content
+  msg_time = event.channel.history(2, nil, id.join - 1).last.timestamp
+  msg_username = event.channel.history(2, nil, id.join - 1).last.author.name
+  msg_userava = event.channel.history(2, nil, id.join - 1).last.author.avatar_url
+  event.channel.send_embed do |e|
+    e.author = Discordrb::Webhooks::EmbedAuthor.new(name: "#{msg_username}", icon_url: "#{msg_userava}")
+    e.description = "#{msg_content}"
+    e.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Sent on #{msg_time}")
+    e.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
+      3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
+      16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
+      6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
+      7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
+    2582883, 13632200, 12690287, 14127493].sample
+  end
+end
+
 bot.command(:cmds, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
   event << "cah!eval: Do stuff."
   event << "cah!die: Kill urself."
@@ -99,6 +117,8 @@ bot.command(:cmds, help_available: false, permission_message: false, permission_
   event << "cah!servercount: How high can you go?"
   event << "cah!say: Isn't this redundant for a selfbot?"
   event << "cah!restart: Something new."
+  event << "cah!esay: Says stuff in an embed, the embed color is based of a list of 34 colors"
+  event << "cah!quote <messageid>: Quotes a message, using an embed format"
   event << ""
   event << "For any bystanders who saw this, yes, I did make this somewhat from scratch ~~(I did however take some code from my own bot <:CLAP:267372593483350016>)~~"
 end
