@@ -97,10 +97,10 @@ bot.command(:say, help_available: false, permission_message: false, permission_l
 end
 
 bot.command(:quote, help_available: false, permission_message: false, permission_level: 1) do |event, *id|
-  msg_content = event.channel.history(2, nil, id.join - 1).last.content
-  msg_time = event.channel.history(2, nil, id.join - 1).last.timestamp
-  msg_username = event.channel.history(2, nil, id.join - 1).last.author.name
-  msg_userava = event.channel.history(2, nil, id.join - 1).last.author.avatar_url
+  msg_content = event.channel.history(2, nil, id - 1).last.content
+  msg_time = event.channel.history(2, nil, id - 1).last.timestamp
+  msg_username = event.channel.history(2, nil, id - 1).last.author.name
+  msg_userava = event.channel.history(2, nil, id - 1).last.author.avatar_url
   event.channel.send_embed do |e|
     e.author = Discordrb::Webhooks::EmbedAuthor.new(name: "#{msg_username}", icon_url: "#{msg_userava}")
     e.description = "#{msg_content}"
