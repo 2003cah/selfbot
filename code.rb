@@ -96,7 +96,7 @@ bot.command(:say, help_available: false, permission_message: false, permission_l
   event.message.edit ["Uh, don't you think a say command for a selfbot is a bit redundant?", "Uh, why do you need this, dude?", "If you want to say something, do it yourself", "[joke about how `say` commands in selfbots are dumb]"].sample
 end
 
-bot.command(:quote, help_available: false, permission_message: false, permission_level: 1) do |event, *id|
+bot.command(:quote, help_available: false, permission_message: false, permission_level: 1) do |event, id|
   msg_content = event.channel.history(2, nil, id.to_i - 1).last.content
   msg_time = event.channel.history(2, nil, id.to_i - 1).last.timestamp
   msg_username = event.channel.history(2, nil, id.to_i - 1).last.author.name
