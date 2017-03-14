@@ -1,11 +1,19 @@
 require 'discordrb'
 require 'configatron'
 require 'open-uri'
+require 'fileutils'
+require 'tempfile'
 require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: 'cah!', advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
 
 bot.set_user_permission(228290433057292288, 1)
+
+def loadfile
+  File.open('todo.txt').each do |line|
+  puts line
+  end
+end
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
@@ -102,7 +110,7 @@ bot.command(:quote, help_available: false, permission_message: false, permission
   msg_username = event.channel.history(2, nil, id.to_i - 1).last.author.name
   msg_userava = event.channel.history(2, nil, id.to_i - 1).last.author.avatar_url
   event.channel.send_embed do |e|
-    e.author = Discordrb::Webhooks::EmbedAuthor.new(name: "#{msg_username}", icon_url: "#{msg_userava}")
+    e.author = Discordrb::Webhooks::EmbedAuthor.new(name: "#{msg_username} has been quoted!", icon_url: "#{msg_userava}")
     e.description = "#{msg_content}"
     e.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Sent on #{msg_time}")
     e.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
@@ -111,6 +119,24 @@ bot.command(:quote, help_available: false, permission_message: false, permission
       6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
       7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
     2582883, 13632200, 12690287, 14127493].sample
+  end
+end
+
+bot.command(:todo, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event, action, *args|
+  case action
+  when 'remove'
+    tmp = Tempfile.new("extract")
+    open('todo.txt', 'r').each { |l| tmp << l unless l.chomp == "#{args.join}" }
+    "Removed `#{args.join}` from the list!"
+  when 'add'
+    File.open(todo.txt, 'a') do |file|
+      file.puts "#{args.join} \n"
+      "Added `#{args.join}` to the list!"
+    end
+  else
+    event << "Your To-Do list, right now"
+    event << ""
+    event << "```#{loadfile}```"
   end
 end
 
