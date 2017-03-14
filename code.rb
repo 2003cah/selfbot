@@ -10,8 +10,8 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 bot.set_user_permission(228290433057292288, 1)
 
 def loadtodo
-  File.open('todo.txt').each do |line|
-  puts line
+  File.open('todo.txt').each do |loadthings|
+  puts loadthings
   end
 end
 
@@ -122,7 +122,7 @@ bot.command(:quote, help_available: false, permission_message: false, permission
   end
 end
 
-bot.command(:todo, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event, action, *args|
+bot.command(:todo, help_available: false, permission_message: false, permission_level: 1, max_args: 2) do |event, action, *args|
   case action
   when 'remove'
     tmp = Tempfile.new("extract")
