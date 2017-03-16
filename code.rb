@@ -122,7 +122,7 @@ bot.command(:quote, help_available: false, permission_message: false, permission
   end
 end
 
-bot.command(:todo, help_available: false, permission_message: false, permission_level: 1, max_args: 2) do |event, action, *args|
+bot.command(:todo, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
   case action
   when 'remove'
     tmp = Tempfile.new("extract")
@@ -137,6 +137,24 @@ bot.command(:todo, help_available: false, permission_message: false, permission_
     event << "Your To-Do list, right now"
     event << ""
     event << "```#{todo}```"
+  end
+end
+
+bot.command(:f, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
+  if args.empty? == true
+    event.message.edit ['Cah has paid their respects :thumbsup::skin-tone-1:',
+      'Cah has paid their respects <:PMthumbsup:255810065917804554>',
+      'Cah has paid their respects :heart:',
+      ':heart: respects paid has their Cah',
+      'Cah has paid their respects :ok_hand::skin-tone-1:',
+      'Cah has paid their respects <:gold_cookie:260084252362801152>'].sample
+  elsif args.empty? == false
+    event.message.edit ["Cah has paid their respects to #{args.join}:thumbsup::skin-tone-1:",
+      "Cah has paid their respects to #{args.join} <:PMthumbsup:255810065917804554>",
+      "Cah has paid their respects to #{args.join} :heart:",
+      ":heart: respects paid has their Cah to #{args.join}",
+      "Cah has paid their respects to #{args.join} :ok_hand::skin-tone-1:",
+      "Cah has paid their respects to #{args.join} <:gold_cookie:260084252362801152>"].sample
   end
 end
 
