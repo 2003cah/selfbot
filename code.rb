@@ -126,10 +126,10 @@ bot.command(:todo, help_available: false, permission_message: false, permission_
   case action
   when 'remove'
     tmp = Tempfile.new("extract")
-    open('todo.txt', 'r').each { |l| tmp << l unless l.chomp == "#{args.join(' ')}" }
+    open('todo.txt', 'a+').each { |l| tmp << l unless l.chomp == "#{args.join(' ')}" }
     "Removed `#{args.join(' ')}` from the list!"
   when 'add'
-    File.open(todo.txt, 'a') do |file|
+    File.open(todo.txt, 'a+') do |file|
       file.puts "#{args.join(' ')} \n"
       "Added `#{args.join(' ')}` to the list!"
     end
