@@ -9,7 +9,7 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 
 bot.set_user_permission(228290433057292288, 1)
 
-def loadtodo
+def todo
   File.open('todo.txt').each do |loadthings|
   puts loadthings
   end
@@ -136,7 +136,7 @@ bot.command(:todo, help_available: false, permission_message: false, permission_
   else
     event << "Your To-Do list, right now"
     event << ""
-    event << "```#{loadtodo}```"
+    event << "```#{todo}```"
   end
 end
 
