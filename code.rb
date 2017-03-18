@@ -149,12 +149,12 @@ bot.command(:f, help_available: false, permission_message: false, permission_lev
       'Cah has paid their respects :ok_hand::skin-tone-1:',
       'Cah has paid their respects <:gold_cookie:260084252362801152>'].sample
   elsif args.empty? == false
-    event.message.edit ["Cah has paid their respects to #{args.join(' ')}:thumbsup::skin-tone-1:",
-      "Cah has paid their respects to #{args.join(' ')} <:PMthumbsup:255810065917804554>",
-      "Cah has paid their respects to #{args.join(' ')} :heart:",
-      ":heart: respects paid has their Cah to #{args.join(' ')}",
-      "Cah has paid their respects to #{args.join(' ')} :ok_hand::skin-tone-1:",
-      "Cah has paid their respects to #{args.join(' ')} <:gold_cookie:260084252362801152>"].sample
+    event.message.edit ["Cah has paid their respects to *#{args.join(' ')}*:thumbsup::skin-tone-1:",
+      "Cah has paid their respects to *#{args.join(' ')}* <:PMthumbsup:255810065917804554>",
+      "Cah has paid their respects to *#{args.join(' ')}* :heart:",
+      ":heart: respects paid has their Cah to *#{args.join(' ')}*",
+      "Cah has paid their respects to *#{args.join(' ')}* :ok_hand::skin-tone-1:",
+      "Cah has paid their respects to *#{args.join(' ')}* <:gold_cookie:260084252362801152>"].sample
   end
 end
 
