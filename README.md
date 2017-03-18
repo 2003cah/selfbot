@@ -36,7 +36,7 @@ To host this selfbot, you must do the following:
 
 Just so I'm not overloading this README with steps, I'll spare you the details on how to complete step 1, figure it out :P
 
-**Step 2.** `git clone` the repo. If you have no idea what I'm taking about, [here's some help](https://help.github.com/articles/cloning-a-repository/)
+**Step 2.** `git clone` the repo. If you have no idea what I'm taking about, [here's some help](https://help.github.com/articles/cloning-a-repository/)    
 **Step 3.** Annnd that's all you need to do!   
 **Step 4.** I'm kidding of course, it doesn't just magically work like that. Anyway, create a file in the repo you just cloned (or rename `example.config.rb` to it) named `config.rb`. In it, you'll want to put the line
 
