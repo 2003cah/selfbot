@@ -52,6 +52,10 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     end
 end
 
+bot.command(:game, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
+  event.message.edit "Cah, your current game status is `#{event.user.game}`"
+end
+
 bot.command(:me, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   event.channel.send_embed do |embed|
     event.message.delete
