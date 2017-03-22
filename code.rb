@@ -167,8 +167,6 @@ bot.command(:cmds, help_available: false, permission_message: false, permission_
   event << "cah!restart: Something new."
   event << "cah!esay: Says stuff in an embed, the embed color is based of a list of 34 colors"
   event << "cah!quote <messageid>: Quotes a message, using an embed format"
-  event << ""
-  event << "For any bystanders who saw this, yes, I did make this somewhat from scratch ~~(I did however take some code from my own bot <:CLAP:267372593483350016>)~~"
 end
 
 # whatever I'll finish it later
