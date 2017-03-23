@@ -162,13 +162,13 @@ bot.command(:f, help_available: false, permission_message: false, permission_lev
   end
 end
 
-bot.command(:cmds, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  event << "#{configatron.prefix}eval: Do stuff."
-  event << "#{configatron.prefix}die: Kill urself."
-  event << "#{configatron.prefix}ping: You alive bro?"
-  event << "#{configatron.prefix}servercount: How high can you go?"
+bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
+  event << "#{configatron.prefix}eval: Evaluate code, Ruby style."
+  event << "#{configatron.prefix}die: Shuts down the bot, without pulling code or anything."
+  event << "#{configatron.prefix}ping: Check to see if your selfbot is alive"
+  event << "#{configatron.prefix}servercount: Prints your server count"
   event << "#{configatron.prefix}say: Isn't this redundant for a selfbot?"
-  event << "#{configatron.prefix}restart: Something new."
+  event << "#{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot"
   event << "#{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors"
   event << "#{configatron.prefix}quote <messageid>: Quotes a message, using an embed format"
 end
