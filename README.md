@@ -31,19 +31,29 @@ While it may be a big shock to some of you, this selfbot is *not perfect*, somet
 ### How to host/use?????????????   
 Calm down with the question marks, mate  
 
-To host this selfbot, you must do the following:   
+To host this selfbot, you must do the following:
+
+Keep in mind these steps are for Windows users. Since I'm sure these steps are different on other OS's, I'd suggest you look certain stuff up.
+
 **Step 1.** Before you start, ensure you have `Ruby`, the Ruby gem `Configatron`, and most importantly, the **`discordrb`** gem    
 
-Just so I'm not overloading this README with steps, I'll spare you the details on how to complete step 1, figure it out :P
+Apparently this README was short afterwards, so I'll show you how to install Ruby & stuff very quickly
 
-**Step 2.** `git clone` the repo. If you have no idea what I'm taking about, [here's some help](https://help.github.com/articles/cloning-a-repository/)    
+- Install your preferred Ruby version here https://rubyinstaller.org/, make sure you save to your PATH
+- Check to make sure you got it right by doing `ruby -v` in your console
+- `gem install configatron` and `gem install discordrb`
+
+**Step 2.** `git clone` the repo (if you have git installed). If you have no idea what I'm taking about, [here's some help](https://help.github.com/articles/cloning-a-repository/)    
 **Step 3.** Annnd that's all you need to do!   
-**Step 4.** I'm kidding of course, it doesn't just magically work like that. Anyway, create a file in the repo you just cloned (or rename `example.config.rb` to it) named `config.rb`. In it, you'll want to put the line
+**Step 4.** I'm kidding of course, it doesn't just magically work like that. Anyway, create a file in the repo you just cloned (or rename `example.config.rb` to it) named `config.rb`. In it, you'll want to put the lines
 
 ```rb
 configatron.token = 'mfa.YoUr-T_oKen.HEre'
+configatron.prefix = ' Your Prefered Prefix'
+configatron.name = 'Your username, or whatever you want the selfbot to call you'
+configatron.id = 'In order for the selfbot to properly work, place your User ID here'
 ```
-in it, obviously putting in your token into the quotes.
+in it, obviously putting in your token & stuff into their respective places.
 
 Wait, you don't know how to get your user token? No probalo
 
@@ -53,5 +63,3 @@ Ctrl+Shift+I on Discord, click the double >, Application, scroll down, bam
 ![bam](http://owo.whats-th.is/65d43d.png)    
 
 **Step 5.** Provided that you did everything right, you should be able to `ruby code.rb` in your console and watch it connect :thumbsup:
-
-**Optional Step 6.** If you want, I recommend you change all the "Cah" stuff to whatever you want (including the prefix), it's really not that hard to do, so I won't go and walk you through it.

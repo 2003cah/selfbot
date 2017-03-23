@@ -5,9 +5,9 @@ require 'fileutils'
 require 'tempfile'
 require_relative 'config.rb'
 
-bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: 'cah!', advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
+bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: configatron.prefix, advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
 
-bot.set_user_permission(228290433057292288, 1)
+bot.set_user_permission(configatron.id.to_i, 1)
 
 def todo
   File.open('todo.txt').each do |loadthings|
@@ -35,31 +35,31 @@ end
 
 bot.command(:set, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
   case action
-    when 'avatar'
-      open("#{args.join(' ')}") { |pic| event.bot.profile.avatar = pic }
-      event.message.edit "Avatar changed!"
-    when 'game'
-      bot.game = "#{args.join(' ')}"
-      event.message.edit "Game set to: `#{args.join(' ')}`"
-    when 'status'
-      online = bot.on
-      idle = bot.idle
-      invis = bot.invisible
-      dnd = bot.dnd
-      eval args.join
-    else
-      event.message.edit "Cah did his own command wrong smh"
-    end
+  when 'avatar'
+    open("#{args.join(' ')}") { |pic| event.bot.profile.avatar = pic }
+    event.message.edit "Avatar changed!"
+  when 'game'
+    bot.game = "#{args.join(' ')}"
+    event.message.edit "Game set to: `#{args.join(' ')}`"
+  when 'status'
+    online = bot.on
+    idle = bot.idle
+    invis = bot.invisible
+    dnd = bot.dnd
+    eval args.join
+  else
+    event.message.edit "#{configatron.name} did his own command wrong smh"
+  end
 end
 
 bot.command(:game, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  event.message.edit "Cah, your current game status is `#{event.user.game}`"
+  event.message.edit "#{configatron.name}, your current game status is `#{event.user.game}`"
 end
 
 bot.command(:me, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   event.channel.send_embed do |embed|
     event.message.delete
-    embed.description = "***Cah*** *#{args.join(' ')}*"
+    embed.description = "***#{configatron.name}*** *#{args.join(' ')}*"
     embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
@@ -101,7 +101,7 @@ bot.command(:ping, help_available: false, max_args: 0, permission_message: false
 end
 
 bot.command([:servercount, :servcount], help_available: false, max_args: 0, permission_message: false, permission_level: 1) do |event|
-  event.message.edit "Cah, you're in **#{bot.servers.count}** servers right now"
+  event.message.edit "#{configatron.name}, you're in **#{bot.servers.count}** servers right now"
 end
 
 bot.command(:say, help_available: false, permission_message: false, permission_level: 1, min_args: 0) do |event|
@@ -146,31 +146,31 @@ end
 
 bot.command(:f, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   if args.empty? == true
-    event.message.edit ['Cah has paid their respects :thumbsup::skin-tone-1:',
-      'Cah has paid their respects <:PMthumbsup:255810065917804554>',
-      'Cah has paid their respects :heart:',
-      ':heart: respects paid has their Cah',
-      'Cah has paid their respects :ok_hand::skin-tone-1:',
-      'Cah has paid their respects <:gold_cookie:260084252362801152>'].sample
+    event.message.edit ['#{configatron.name} has paid their respects :thumbsup::skin-tone-1:',
+      '#{configatron.name} has paid their respects <:PMthumbsup:255810065917804554>',
+      '#{configatron.name} has paid their respects :heart:',
+      ':heart: respects paid has their #{configatron.name}',
+      '#{configatron.name} has paid their respects :ok_hand::skin-tone-1:',
+      '#{configatron.name} has paid their respects <:gold_cookie:260084252362801152>'].sample
   elsif args.empty? == false
-    event.message.edit ["Cah has paid their respects to *#{args.join(' ')}*:thumbsup::skin-tone-1:",
-      "Cah has paid their respects to *#{args.join(' ')}* <:PMthumbsup:255810065917804554>",
-      "Cah has paid their respects to *#{args.join(' ')}* :heart:",
-      ":heart: respects paid has their Cah to *#{args.join(' ')}*",
-      "Cah has paid their respects to *#{args.join(' ')}* :ok_hand::skin-tone-1:",
-      "Cah has paid their respects to *#{args.join(' ')}* <:gold_cookie:260084252362801152>"].sample
+    event.message.edit ["#{configatron.name} has paid their respects to *#{args.join(' ')}*:thumbsup::skin-tone-1:",
+      "#{configatron.name} has paid their respects to *#{args.join(' ')}* <:PMthumbsup:255810065917804554>",
+      "#{configatron.name} has paid their respects to *#{args.join(' ')}* :heart:",
+      ":heart: respects paid has their #{configatron.name} to *#{args.join(' ')}*",
+      "#{configatron.name} has paid their respects to *#{args.join(' ')}* :ok_hand::skin-tone-1:",
+      "#{configatron.name} has paid their respects to *#{args.join(' ')}* <:gold_cookie:260084252362801152>"].sample
   end
 end
 
 bot.command(:cmds, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  event << "cah!eval: Do stuff."
-  event << "cah!die: Kill urself."
-  event << "cah!ping: You alive bro?"
-  event << "cah!servercount: How high can you go?"
-  event << "cah!say: Isn't this redundant for a selfbot?"
-  event << "cah!restart: Something new."
-  event << "cah!esay: Says stuff in an embed, the embed color is based of a list of 34 colors"
-  event << "cah!quote <messageid>: Quotes a message, using an embed format"
+  event << "#{configatron.prefix}eval: Do stuff."
+  event << "#{configatron.prefix}die: Kill urself."
+  event << "#{configatron.prefix}ping: You alive bro?"
+  event << "#{configatron.prefix}servercount: How high can you go?"
+  event << "#{configatron.prefix}say: Isn't this redundant for a selfbot?"
+  event << "#{configatron.prefix}restart: Something new."
+  event << "#{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors"
+  event << "#{configatron.prefix}quote <messageid>: Quotes a message, using an embed format"
 end
 
 # whatever I'll finish it later
