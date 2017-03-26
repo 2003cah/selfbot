@@ -10,8 +10,7 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 bot.set_user_permission(configatron.id.to_i, 1)
 
 def todo
-  content = File.readlines 'todo.txt'
-  content.each_with_index { |line, i| puts "#{i + 1}: #{line}" }
+  open('todo.txt', &:read)
 end
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
