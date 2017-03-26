@@ -139,6 +139,7 @@ bot.command(:todo, help_available: false, permission_message: false, permission_
   case action
   when 'remove'
     remove
+    "Removed `#{args.join(' ')}` from the list!"
   when 'add'
     File.open('todo.txt', 'a+') do |file|
       file.puts "#{args.join(' ')} \n"
