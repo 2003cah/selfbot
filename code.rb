@@ -9,22 +9,18 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 
 bot.set_user_permission(configatron.id.to_i, 1)
 
-# shut up rubocop
-class Todo
-  def read
-    open('todo.txt', &:read)
+def read
+  open('todo.txt', &:read)
+end
+
+def remove
+  file_lines = ''
+    IO.readlines('todo.txt').each do |line, *args|
+    file_lines += line unless args.join(' ')
   end
 
-  def remove
-    file_lines = ''
-
-    IO.readlines('todo.txt').each do |line, *args|
-      file_lines += line unless args.join(' ')
-    end
-
-    File.open('todo.txt', 'w') do |file|
-      file.puts file_lines
-    end
+  File.open('todo.txt', 'w') do |file|
+    file.puts file_lines
   end
 end
 
@@ -142,7 +138,7 @@ end
 bot.command(:todo, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
   case action
   when 'remove'
-    Todo.remove
+    remove
   when 'add'
     File.open('todo.txt', 'a+') do |file|
       file.puts "#{args.join(' ')} \n"
@@ -151,7 +147,7 @@ bot.command(:todo, help_available: false, permission_message: false, permission_
   else
     event << "Your To-Do list, right now"
     event << ""
-    event << "```#{Todo.read}```"
+    event << "```#{read}```"
   end
 end
 
