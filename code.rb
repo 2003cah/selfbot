@@ -14,13 +14,10 @@ def read
 end
 
 def remove
-  file_lines = ''
-    IO.readlines('todo.txt').each do |line, *args|
-    file_lines += line unless args.join(' ')
-  end
-
-  File.open('todo.txt', 'w') do |file|
-    file.puts file_lines
+  File.open(output_file, "w") do |out_file|
+    File.foreach(input_file) do |line|
+      out_file.puts line unless args.join(' ')
+    end
   end
 end
 
