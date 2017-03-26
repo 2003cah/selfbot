@@ -10,8 +10,10 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 bot.set_user_permission(configatron.id.to_i, 1)
 
 def todo
-  File.open('todo.txt').each do |line|
-  puts line
+  File.open("todo.txt", "r") do |f|
+    f.each_line do |line|
+      puts line
+    end
   end
 end
 
