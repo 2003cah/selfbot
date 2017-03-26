@@ -10,8 +10,8 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 bot.set_user_permission(configatron.id.to_i, 1)
 
 def todo
-  File.open('todo.txt').each do |loadthings|
-  puts loadthings
+  File.open('todo.txt').each do |line|
+  puts line
   end
 end
 
@@ -146,12 +146,12 @@ end
 
 bot.command(:f, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   if args.empty? == true
-    event.message.edit ['#{configatron.name} has paid their respects :thumbsup::skin-tone-1:',
-      '#{configatron.name} has paid their respects <:PMthumbsup:255810065917804554>',
-      '#{configatron.name} has paid their respects :heart:',
-      ':heart: respects paid has their #{configatron.name}',
-      '#{configatron.name} has paid their respects :ok_hand::skin-tone-1:',
-      '#{configatron.name} has paid their respects <:gold_cookie:260084252362801152>'].sample
+    event.message.edit ["#{configatron.name} has paid their respects :thumbsup::skin-tone-1:",
+      "#{configatron.name} has paid their respects <:PMthumbsup:255810065917804554>",
+      "#{configatron.name} has paid their respects :heart:",
+      ":heart: respects paid has their #{configatron.name}",
+      "#{configatron.name} has paid their respects :ok_hand::skin-tone-1:",
+      "#{configatron.name} has paid their respects <:gold_cookie:260084252362801152>"].sample
   elsif args.empty? == false
     event.message.edit ["#{configatron.name} has paid their respects to *#{args.join(' ')}*:thumbsup::skin-tone-1:",
       "#{configatron.name} has paid their respects to *#{args.join(' ')}* <:PMthumbsup:255810065917804554>",
