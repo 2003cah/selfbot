@@ -14,7 +14,7 @@ def read
 end
 
 def remove
-  File.open(todo.txt, "w") do |out_file|
+  File.open('todo.txt', "w") do |out_file|
     File.foreach('todo.txt') do |line|
       out_file.puts line unless args.join(' ')
     end
