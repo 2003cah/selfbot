@@ -16,7 +16,7 @@ end
 def remove
   File.open('todo.txt', "w") do |out_file|
     File.foreach('todo.txt') do |line|
-      out_file.puts line unless args.join(' ')
+      out_file.puts line unless line.chomp == "#{args.join(' ')}"
     end
   end
 end
