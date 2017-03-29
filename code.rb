@@ -65,7 +65,7 @@ end
 bot.command(:me, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   event.channel.send_embed do |embed|
     event.message.delete
-    embed.description = "***#{configatron.name}*** *#{args.join(' ')}*"
+    embed.description = "***#{configatron.name}*** *#{event.message.content[configatron.prefix.size..-1]}*"
     embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
@@ -78,7 +78,7 @@ end
 bot.command(:esay, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   event.channel.send_embed do |embed|
     event.message.delete
-    embed.description = "#{args.join(' ')}"
+    embed.description = "#{event.message.content[configatron.prefix.size..-1]}"
     embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
