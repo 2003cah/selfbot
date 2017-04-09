@@ -64,4 +64,6 @@ Ctrl+Shift+I on Discord, click the double >, Application, scroll down, bam
 
 **Step 5.** Provided that you did everything right, you should be able to `ruby code.rb` in your console and watch it connect :thumbsup:
 
+Noteroni: Issues are bound to happen when installing my selfbot. If in the event that occurs, shoot me a Discord DM and we can troubleshoot *together*
+
 I update this selfbot from time to time, so to get the latest update (provided you have git set up), you can do `<yourprefix>restart`, it'll exit the bot, pull the code, and relaunch.
