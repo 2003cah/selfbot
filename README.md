@@ -20,7 +20,7 @@ Same thing, color is from a list of 34 colors
 - Check your ~~(probably high :eyes:)~~ server count
 
 ![Check your server count](http://owo.whats-th.is/ba4a9c.png)
-- Create/Check your todo list
+- Create/Check your todo list (Requires a "todo.txt" file)
 
 ![aaaaaaaaa](http://files.cahbot.pro/ZGI1Y.png)   
 Remove function isn't working fully yet
