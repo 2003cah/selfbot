@@ -22,8 +22,8 @@ Same thing, color is from a list of 34 colors
 ![Check your server count](http://owo.whats-th.is/ba4a9c.png)
 - Create/Check your todo list
 
-![aaaaaaaaa](http://owo.whats-th.is/319b7e.png)   
-Uhh, I'm working on that :stuck_out_tongue:
+![aaaaaaaaa](http://files.cahbot.pro/ZGI1Y.png)   
+Remove function isn't working fully yet
 - And some other stuff I'm too lazy to write!
 
 **DISCLAIMER:**    
