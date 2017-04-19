@@ -167,15 +167,34 @@ bot.command(:f, help_available: false, permission_message: false, permission_lev
   end
 end
 
+bot.command(:info, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
+  event << "__Info about this selfbot__"
+  event << ''
+  event << "*What is it?* A selfbot Cah uses on a day to day basis, written in Ruby"
+  event << "*Who made it?* Cah#5153 made this selfbot"
+  event << "*Is it open-source?* For the most part, just don't claim it as your own without making any changes :eyes:: https://github.com/2003cah/selfbot"
+  event << "*When was it made?* First commit was on Jan 19, 2017, so it's safe to assume it was made that day"
+end
+
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  event << "#{configatron.prefix}eval: Evaluate code, Ruby style."
-  event << "#{configatron.prefix}die: Shuts down the bot, without pulling code or anything."
-  event << "#{configatron.prefix}ping: Check to see if your selfbot is alive"
-  event << "#{configatron.prefix}servercount: Prints your server count"
-  event << "#{configatron.prefix}say: Isn't this redundant for a selfbot?"
-  event << "#{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot"
-  event << "#{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors"
-  event << "#{configatron.prefix}quote <messageid>: Quotes a message, using an embed format"
+  event.channel.send_embed do |e|
+    e.title = "Cah's Selfbot Commands"
+    e.description = "#{configatron.prefix}eval: Evaluate code, Ruby style.
+     #{configatron.prefix}die: Shuts down the bot, without pulling code or anything.
+     #{configatron.prefix}ping: Check to see if your selfbot is alive
+     #{configatron.prefix}servercount: Prints your server count
+     #{configatron.prefix}say: Isn't this redundant for a selfbot?
+     #{configatron.prefix}info: Shows some info about this selfbot
+     #{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot
+     #{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors
+     #{configatron.prefix}quote <messageid>: Quotes a message, using an embed format"
+    e.color =  [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
+       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
+       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
+       6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
+       7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
+     2582883, 13632200, 12690287, 14127493].sample
+  end
 end
 
 # whatever I'll finish it later
