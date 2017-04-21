@@ -247,7 +247,7 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
   else
   "__Cah's Selfbot Commands__
 
-  #{configatron.prefix}eval: Evaluate code, Ruby style.
+#{configatron.prefix}eval: Evaluate code, Ruby style.
 #{configatron.prefix}die: Shuts down the bot, without pulling code or anything.
 #{configatron.prefix}ping: Check to see if your selfbot is alive
 #{configatron.prefix}servercount: Prints your server count
