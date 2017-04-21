@@ -180,14 +180,15 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
   event.channel.send_embed do |e|
     e.title = "Cah's Selfbot Commands"
     e.description = "#{configatron.prefix}eval: Evaluate code, Ruby style.
-     #{configatron.prefix}die: Shuts down the bot, without pulling code or anything.
-     #{configatron.prefix}ping: Check to see if your selfbot is alive
-     #{configatron.prefix}servercount: Prints your server count
-     #{configatron.prefix}say: Isn't this redundant for a selfbot?
-     #{configatron.prefix}info: Shows some info about this selfbot
-     #{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot
-     #{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors
-     #{configatron.prefix}quote <messageid>: Quotes a message, using an embed format"
+#{configatron.prefix}die: Shuts down the bot, without pulling code or anything.
+#{configatron.prefix}ping: Check to see if your selfbot is alive
+#{configatron.prefix}servercount: Prints your server count
+#{configatron.prefix}say: Isn't this redundant for a selfbot?
+#{configatron.prefix}info: Shows some info about this selfbot
+#{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot
+#{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors
+#{configatron.prefix}quote <messageid>: Quotes a message, using an embed format
+#{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works"
     e.color =  [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
        3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
        16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
