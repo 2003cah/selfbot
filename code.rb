@@ -9,6 +9,13 @@ bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user,
 
 bot.set_user_permission(configatron.id.to_i, 1)
 
+colors = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
+  3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
+  16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
+  6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
+  7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
+2582883, 13632200, 12690287, 14127493].sample
+
 def read
   open('todo.txt', &:read)
 end
@@ -53,6 +60,23 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     invis = bot.invisible
     dnd = bot.dnd
     eval args.join
+  when 'embeds'
+    if args.join(' ') == 'false'
+      file_names = ['config.rb']
+      file_names.each do |file_name|
+        text = File.read(file_name)
+        new_contents = text.gsub(/configatron.embed = 'true'/, "configatron.embed = 'false'")
+        File.open(file_name, "w") { |file| file.puts new_contents }
+
+      end
+    elsif args.join(' ') == 'true'
+      file_names = ['config.rb']
+      file_names.each do |file_name|
+        text = File.read(file_name)
+        new_contents = text.gsub(/configatron.embed = 'false'/, "configatron.embed = 'true'")
+        File.open(file_name, "w") { |file| file.puts new_contents }
+      end
+    end
   else
     event.message.edit "#{configatron.name} did his own command wrong smh"
   end
@@ -66,12 +90,7 @@ bot.command(:me, help_available: false, permission_message: false, permission_le
   event.channel.send_embed do |embed|
     event.message.delete
     embed.description = "***#{configatron.name}*** *#{event.message.content[configatron.prefix.size + 2..-1]}*"
-    embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
-      3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
-      16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
-      6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
-      7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
-    2582883, 13632200, 12690287, 14127493].sample
+    embed.color = colors
   end
 end
 
@@ -79,25 +98,44 @@ bot.command(:esay, help_available: false, permission_message: false, permission_
   event.channel.send_embed do |embed|
     event.message.delete
     embed.description = "#{event.message.content[configatron.prefix.size + 4..-1]}"
-    embed.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
-      3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
-      16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
-      6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
-      7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
-    2582883, 13632200, 12690287, 14127493].sample
+    embed.color = colors
   end
 end
 
 bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
-  bot.send_message(event.channel.id, ':wave::skin-tone-1:')
-  exit
+  if configatron.embeds == true
+    event.channel.send_embed do |e|
+      e.title = "#{configatron.prefix}die"
+      e.description = "':wave::skin-tone-1:'"
+      e.color = colors
+    end
+  else
+    bot.send_message(event.channel.id, ':wave::skin-tone-1:')
+    exit
+  end
 end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
-  begin
-    event.message.edit ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
-    sleep 0.5
-    exec("bash restart.sh")
+  if configatron.embeds == true
+    begin
+      event.channel.send_embed do |e|
+        e.title = "#{configatron.prefix}restart"
+        e.description = ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
+        e.color = colors
+      end
+      sleep 0.5
+      exec("bash restart.sh")
+    rescue
+      event.respond "Something bad happened, make sure there's a `restart.sh` file in the selfbot folder, if so, bug Cah about it"
+    end
+  else
+    begin
+      event.message.edit ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
+      sleep 0.5
+      exec("bash restart.sh")
+    rescue
+      event.respond "Something bad happened, make sure there's a `restart.sh` file in the selfbot folder, if so, bug Cah about it"
+    end
   end
 end
 
@@ -189,9 +227,10 @@ bot.command(:roll, help_available: false, max_args: 0, permission_level: 1, perm
 end
 
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  event.channel.send_embed do |e|
-    e.title = "Cah's Selfbot Commands"
-    e.description = "#{configatron.prefix}eval: Evaluate code, Ruby style.
+  if configatron.embeds == true
+    event.channel.send_embed do |e|
+      e.title = "Cah's Selfbot Commands"
+      e.description = "#{configatron.prefix}eval: Evaluate code, Ruby style.
 #{configatron.prefix}die: Shuts down the bot, without pulling code or anything.
 #{configatron.prefix}ping: Check to see if your selfbot is alive
 #{configatron.prefix}servercount: Prints your server count
@@ -203,12 +242,23 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works
 #{configatron.prefix}roll: Roll a die (Picks a number from 1 through 6)
 #{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
-    e.color =  [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
-       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
-       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
-       6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
-       7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
-     2582883, 13632200, 12690287, 14127493].sample
+      e.color = colors
+    end
+  else
+  "__Cah's Selfbot Commands__
+
+  #{configatron.prefix}eval: Evaluate code, Ruby style.
+#{configatron.prefix}die: Shuts down the bot, without pulling code or anything.
+#{configatron.prefix}ping: Check to see if your selfbot is alive
+#{configatron.prefix}servercount: Prints your server count
+#{configatron.prefix}say: Isn't this redundant for a selfbot?
+#{configatron.prefix}info: Shows some info about this selfbot
+#{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot
+#{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors
+#{configatron.prefix}quote <messageid>: Quotes a message, using an embed format
+#{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works
+#{configatron.prefix}roll: Roll a die (Picks a number from 1 through 6)
+#{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
   end
 end
 
