@@ -221,7 +221,7 @@ bot.command(:roll, help_available: false, max_args: 0, permission_level: 1, perm
 end
 
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  if configatron.embeds == true
+  if configatron.embeds == 'true'
     event.channel.send_embed do |e|
       e.title = "Cah's Selfbot Commands"
       e.description = "#{configatron.prefix}eval: Evaluate code, Ruby style.
@@ -238,7 +238,7 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
       e.color = colors
     end
-  elsif configatron.embeds == false
+  elsif configatron.embeds == 'false'
   "__Cah's Selfbot Commands__
 
 #{configatron.prefix}eval: Evaluate code, Ruby style.
