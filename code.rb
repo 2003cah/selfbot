@@ -65,14 +65,14 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/configatron.embed = 'true'/, "configatron.embed = 'false'")
+        new_contents = text.gsub(/true/, "false")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     elsif args.join(' ') == 'true'
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/configatron.embed = 'false'/, "configatron.embed = 'true'")
+        new_contents = text.gsub(/false/, "true")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     end
