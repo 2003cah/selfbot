@@ -208,18 +208,6 @@ bot.command(:info, help_available: false, permission_message: false, permission_
   event << "*When was it made?* First commit was on Jan 19, 2017, so it's safe to assume it was made that day"
 end
 
-bot.command(:flip, help_available: false, max_args: 0, permission_level: 1, permission_message: false) do |event|
-  event.message.edit '**Flipping Coin...**'
-  sleep [1, 2, 3, 4].sample
-  event.message.edit ["#{configatron.name} flipped a coin and it landed on Heads", "#{configatron.name} flipped a coin and it landed on tails"].sample
-end
-
-bot.command(:roll, help_available: false, max_args: 0, permission_level: 1, permission_message: false) do |event|
-  event.message.edit '**Rolling Dice!**'
-  sleep [1, 2, 3, 4].sample
-  event.message.edit "#{configatron.name} rolled a die and got a... **#{rand(1..6)}!**"
-end
-
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
   if configatron.embeds == 'true'
     event.channel.send_embed do |e|
@@ -250,9 +238,19 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}restart: Closes the bot, `git pull`s, and reloads the bot
 #{configatron.prefix}esay: Says stuff in an embed, the embed color is based of a list of 34 colors
 #{configatron.prefix}quote <messageid>: Quotes a message, using an embed format
+<<<<<<< HEAD
 #{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works
 #{configatron.prefix}roll: Roll a die (Picks a number from 1 through 6)
 #{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
+=======
+#{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works"
+    e.color =  [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
+       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
+       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
+       6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
+       7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
+     2582883, 13632200, 12690287, 14127493].sample
+>>>>>>> parent of f027f92... Okay then
   end
 end
 
