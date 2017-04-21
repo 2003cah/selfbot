@@ -67,7 +67,6 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
         text = File.read(file_name)
         new_contents = text.gsub(/configatron.embed = 'true'/, "configatron.embed = 'false'")
         File.open(file_name, "w") { |file| file.puts new_contents }
-
       end
     elsif args.join(' ') == 'true'
       file_names = ['config.rb']
@@ -161,12 +160,7 @@ bot.command(:quote, help_available: false, permission_message: false, permission
     e.author = Discordrb::Webhooks::EmbedAuthor.new(name: "#{msg_username} has been quoted!", icon_url: "#{msg_userava}")
     e.description = "#{msg_content}"
     e.footer = Discordrb::Webhooks::EmbedFooter.new(text: "Sent on #{msg_time}")
-    e.color = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
-      3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
-      16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
-      6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
-      7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
-    2582883, 13632200, 12690287, 14127493].sample
+    e.color = colors
   end
 end
 
@@ -244,7 +238,7 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
       e.color = colors
     end
-  else
+  elsif configatron.embeds == false
   "__Cah's Selfbot Commands__
 
 #{configatron.prefix}eval: Evaluate code, Ruby style.
