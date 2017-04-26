@@ -98,7 +98,7 @@ end
 
 bot.command(:ping, help_available: false, max_args: 0, permission_message: false, permission_level: 1) do |event|
   m = event.respond ('Pinging!')
-  m.edit "Pong! Hey, that took #{((Time.now - event.timestamp) * 1000).to_i}ms."
+  m.edit ["Pong! Hey, that took #{((Time.now - event.timestamp) * 1000).to_i}ms.", "Spong! Hey, that took #{((Time.now - event.timestamp) * 1000).to_i}ms", "This whole operation took #{((Time.now - event.timestamp) * 1000).to_i}ms to do", "WOOOAAAAAHHHHH, that took #{((Time.now - event.timestamp) * 1000).to_i}ms", "Memes (took #{((Time.now - event.timestamp) * 1000).to_i}ms)"].sample
 end
 
 bot.command([:servercount, :servcount], help_available: false, max_args: 0, permission_message: false, permission_level: 1) do |event|
