@@ -206,8 +206,11 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     e.color =  colors
 =======
+=======
+>>>>>>> parent of 85435db... The moment. The moment to define a generation
 =======
 >>>>>>> parent of 85435db... The moment. The moment to define a generation
 =======
@@ -220,6 +223,9 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
      2582883, 13632200, 12690287, 14127493].sample
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 85435db... The moment. The moment to define a generation
+=======
 >>>>>>> parent of 85435db... The moment. The moment to define a generation
 =======
 >>>>>>> parent of 85435db... The moment. The moment to define a generation
