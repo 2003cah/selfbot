@@ -1,4 +1,4 @@
-require 'discordrb'
+orequire 'discordrb'
 require 'configatron'
 require 'open-uri'
 require 'fileutils'
@@ -27,6 +27,8 @@ colors = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
   6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
   7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
 2582883, 13632200, 12690287, 14127493].sample
+
+$embeds = true
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
@@ -58,25 +60,12 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     invis = bot.invisible
     dnd = bot.dnd
     eval args.join
-<<<<<<< HEAD
-=======
   when 'embeds'
     if args.join(' ') == 'false'
-      file_names = ['config.rb']
-      file_names.each do |file_name|
-        text = File.read(file_name)
-        new_contents = text.gsub(/configatron.embed = 'true'/, "configatron.embed = 'false'")
-        File.open(file_name, "w") { |file| file.puts new_contents }
-      end
+      $embeds = false
     elsif args.join(' ') == 'true'
-      file_names = ['config.rb']
-      file_names.each do |file_name|
-        text = File.read(file_name)
-        new_contents = text.gsub(/configatron.embed = 'false'/, "configatron.embed = 'true'")
-        File.open(file_name, "w") { |file| file.puts new_contents }
-      end
+      $embeds = true
     end
->>>>>>> parent of d711ad3... Your memes... End here
   else
     event.message.edit "#{configatron.name} did his own command wrong smh"
   end
@@ -113,15 +102,37 @@ bot.command(:esay, help_available: false, permission_message: false, permission_
 end
 
 bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
-  bot.send_message(event.channel.id, ':wave::skin-tone-1:')
-  exit
+  if $embeds == true
+    event.channel.send_embed do |e|
+      e.title = "#{configatron.prefix}die"
+      e.description = ':wave::skin-tone-1:'
+      e.color = colors
+    end
+    exit
+  else
+    event.respond ':wave::skin-tone-1:'
+    exit
+  end
 end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
-  begin
-    event.message.edit ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
-    sleep 0.5
-    exec("bash restart.sh")
+  if $embeds = true
+    begin
+      event.message.delete
+      event.channel.send_embed do |e|
+        e.title = "#{configatron.prefix}restart"
+        e.description = ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
+        e.color = colors
+        sleep 0.5
+        exec("bash restart.sh")
+      end
+    end
+  else
+    begin
+      event.message.edit ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
+      sleep 0.5
+      exec("bash restart.sh")
+    end
   end
 end
 
@@ -222,34 +233,7 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works
 #{configatron.prefix}roll: Roll a die (Picks a number from 1 through 6)
 #{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     e.color =  colors
-=======
-=======
->>>>>>> parent of 85435db... The moment. The moment to define a generation
-=======
->>>>>>> parent of 85435db... The moment. The moment to define a generation
-=======
->>>>>>> parent of 85435db... The moment. The moment to define a generation
-    e.color =  [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
-       3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
-       16047888, 4329932, 12906212, 9407771, 1443384, 13694964,
-       6157013, 8115963, 9072972, 16299832, 15397264, 10178593,
-       7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
-     2582883, 13632200, 12690287, 14127493].sample
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 85435db... The moment. The moment to define a generation
-=======
->>>>>>> parent of 85435db... The moment. The moment to define a generation
-=======
->>>>>>> parent of 85435db... The moment. The moment to define a generation
-=======
->>>>>>> parent of 85435db... The moment. The moment to define a generation
   end
 end
 
