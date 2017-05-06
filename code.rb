@@ -58,6 +58,25 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     invis = bot.invisible
     dnd = bot.dnd
     eval args.join
+<<<<<<< HEAD
+=======
+  when 'embeds'
+    if args.join(' ') == 'false'
+      file_names = ['config.rb']
+      file_names.each do |file_name|
+        text = File.read(file_name)
+        new_contents = text.gsub(/configatron.embed = 'true'/, "configatron.embed = 'false'")
+        File.open(file_name, "w") { |file| file.puts new_contents }
+      end
+    elsif args.join(' ') == 'true'
+      file_names = ['config.rb']
+      file_names.each do |file_name|
+        text = File.read(file_name)
+        new_contents = text.gsub(/configatron.embed = 'false'/, "configatron.embed = 'true'")
+        File.open(file_name, "w") { |file| file.puts new_contents }
+      end
+    end
+>>>>>>> parent of d711ad3... Your memes... End here
   else
     event.message.edit "#{configatron.name} did his own command wrong smh"
   end
