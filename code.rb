@@ -205,8 +205,11 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     e.color =  colors
 =======
+=======
+>>>>>>> parent of 85435db... The moment. The moment to define a generation
 =======
 >>>>>>> parent of 85435db... The moment. The moment to define a generation
     e.color =  [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
@@ -216,6 +219,9 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
        7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
      2582883, 13632200, 12690287, 14127493].sample
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 85435db... The moment. The moment to define a generation
+=======
 >>>>>>> parent of 85435db... The moment. The moment to define a generation
 =======
 >>>>>>> parent of 85435db... The moment. The moment to define a generation
