@@ -116,7 +116,7 @@ bot.command(:die, help_available: false, permission_message: false, permission_l
 end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
-  if $embeds = true
+  if $embeds == true
     begin
       event.message.delete
       event.channel.send_embed do |e|
