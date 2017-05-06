@@ -1,4 +1,4 @@
-orequire 'discordrb'
+require 'discordrb'
 require 'configatron'
 require 'open-uri'
 require 'fileutils'
