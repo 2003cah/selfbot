@@ -123,9 +123,9 @@ bot.command(:restart, help_available: false, permission_level: 1, permission_mes
         e.title = "#{configatron.prefix}restart"
         e.description = ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
         e.color = colors
-        sleep 0.5
-        exec("bash restart.sh")
       end
+      sleep 0.5
+      exec("bash restart.sh")
     end
   else
     begin
