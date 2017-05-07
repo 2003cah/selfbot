@@ -117,8 +117,8 @@ end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
   if $embeds == true
+    event.message.delete
     begin
-      event.message.delete
       event.channel.send_embed do |e|
         e.title = "#{configatron.prefix}restart"
         e.description = ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
