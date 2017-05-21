@@ -42,6 +42,7 @@ end
 
 bot.ready do |event|
   bot.game = 'woahdude'
+  $game = "woahdude"
 end
 
 bot.command(:set, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
@@ -51,6 +52,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     event.message.edit "Avatar changed!"
   when 'game'
     bot.game = "#{args.join(' ')}"
+    $game = "#{args.join(' ')}"
     event.message.edit "Game set to: `#{args.join(' ')}`"
   when 'status'
     online = bot.on
@@ -64,7 +66,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
 end
 
 bot.command(:game, help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  event.message.edit "#{configatron.name}, your current game status is `#{event.user.game}`"
+  event.message.edit "#{configatron.name}, your current game status is `#{$game}`"
 end
 
 bot.command(:me, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
