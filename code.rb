@@ -191,11 +191,11 @@ bot.command(:f, help_available: false, permission_message: false, permission_lev
       "#{configatron.name} has paid their respects <:gold_cookie:260084252362801152>"].sample
   elsif args.empty? == false
     event.message.edit ["#{configatron.name} has paid their respects to *#{args.join(' ')}*:thumbsup::skin-tone-1:",
-      "#{configatron.name} has paid their respects to *#{args.join(' ')}* <:PMthumbsup:255810065917804554>",
+      "#{configatron.name} has paid their respects to *#{args.join(' ')}*, nice",
       "#{configatron.name} has paid their respects to *#{args.join(' ')}* :heart:",
       ":heart: respects paid has their #{configatron.name} to *#{args.join(' ')}*",
       "#{configatron.name} has paid their respects to *#{args.join(' ')}* :ok_hand::skin-tone-1:",
-      "#{configatron.name} has paid their respects to *#{args.join(' ')}* <:gold_cookie:260084252362801152>"].sample
+      "#{configatron.name} has paid their respects to *#{args.join(' ')}* :wastebasket:"].sample
   end
 end
 
