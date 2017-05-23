@@ -68,7 +68,9 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
         text = File.read(file_name)
         new_contents = text.gsub(/embeds = true/, "embeds = false")
         File.open(file_name, "w") { |file| file.puts new_contents }
+        nil
       end
+      event.respond "Embeds hae been turned off"
     elsif args.join(' ') == 'true'
       load 'config.rb'
       file_names = ['config.rb']
@@ -76,12 +78,14 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
         text = File.read(file_name)
         new_contents = text.gsub(/embeds = false/, "embeds = true")
         File.open(file_name, "w") { |file| file.puts new_contents }
+        nil
       end
+      evnet.respond "Embeds have been turned on"
     else
       event.respond "Invalid value, try `true` or `false`"
     end
   else
-    event.message.edit "My apologies, but #{args.join(' ')} is not a valid setting, you can use `embeds`, `status`, `game`, or `avatar`"
+    event.message.edit "My apologies, but #{action.join(' ')} is not a valid setting, you can use `embeds`, `status`, `game`, or `avatar`"
   end
 end
 
