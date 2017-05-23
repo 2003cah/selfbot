@@ -80,7 +80,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
         File.open(file_name, "w") { |file| file.puts new_contents }
         nil
       end
-      evnet.respond "Embeds have been turned on"
+      event.respond "Embeds have been turned on"
     else
       event.respond "Invalid value, try `true` or `false`"
     end
