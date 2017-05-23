@@ -3,7 +3,7 @@ require 'configatron'
 require 'open-uri'
 require 'fileutils'
 require 'tempfile'
-load 'config.rb'
+require_relative 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: configatron.prefix, advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
 
@@ -62,6 +62,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     eval args.join
   when 'embeds'
     if args.join(' ') == 'false'
+      load 'config.rb'
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
@@ -69,6 +70,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     elsif args.join(' ') == 'true'
+      load 'config.rb'
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
@@ -114,6 +116,7 @@ bot.command(:esay, help_available: false, permission_message: false, permission_
 end
 
 bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
+  load 'config.rb'
   if $embeds == true
     event.channel.send_embed do |e|
       e.title = "#{configatron.prefix}die"
@@ -127,6 +130,7 @@ bot.command(:die, help_available: false, permission_message: false, permission_l
 end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
+  load 'config.rb'
   if $embeds == true
     begin
       event.channel.send_embed do |e|
@@ -233,6 +237,7 @@ bot.command(:roll, help_available: false, max_args: 0, permission_level: 1, perm
 end
 
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
+  load 'config.rb'
   if $embeds == true
     event.channel.send_embed do |e|
       e.title = "Cah's Selfbot Commands"
