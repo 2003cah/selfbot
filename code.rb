@@ -67,14 +67,14 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/configatron.embeds = true/, "configatron.embeds = false")
+        new_contents = text.gsub(/$configatron.embeds = true/, "$configatron.embeds = false")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     elsif args.join(' ') == 'true'
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/configatron.embeds = false/, "configatron.embeds = true")
+        new_contents = text.gsub(/$configatron.embeds = false/, "$configatron.embeds = true")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     else
@@ -116,7 +116,7 @@ bot.command(:esay, help_available: false, permission_message: false, permission_
 end
 
 bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
-  if configatron.embeds == true
+  if $configatron.embeds == true
     event.channel.send_embed do |e|
       e.title = "#{configatron.prefix}die"
       e.description = "':wave::skin-tone-1:'"
@@ -129,7 +129,7 @@ bot.command(:die, help_available: false, permission_message: false, permission_l
 end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
-  if configatron.embeds == true
+  if $configatron.embeds == true
     begin
       event.channel.send_embed do |e|
         e.title = "#{configatron.prefix}restart"
@@ -235,7 +235,7 @@ bot.command(:roll, help_available: false, max_args: 0, permission_level: 1, perm
 end
 
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
-  if configatron.embeds == true
+  if $configatron.embeds == true
     event.channel.send_embed do |e|
       e.title = "Cah's Selfbot Commands"
       e.description = "#{configatron.prefix}eval: Evaluate code, Ruby style.
