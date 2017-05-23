@@ -3,7 +3,8 @@ require 'configatron'
 require 'open-uri'
 require 'fileutils'
 require 'tempfile'
-load 'config.rb'
+require_relative 'config.rb'
+load 'settings.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: configatron.prefix, advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
 
@@ -64,14 +65,14 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     eval args.join
   when 'embeds'
     if args.join(' ') == 'false'
-      file_names = ['config.rb']
+      file_names = ['settings.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/$embeds = true/, "$embeds = false")
+        new_contents = text.gsub(/$embeds = /, "$embeds = false")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     elsif args.join(' ') == 'true'
-      file_names = ['config.rb']
+      file_names = ['settings.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
         new_contents = text.gsub(/$embeds = false/, "$embeds = true")
