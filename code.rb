@@ -3,8 +3,7 @@ require 'configatron'
 require 'open-uri'
 require 'fileutils'
 require 'tempfile'
-require_relative 'config.rb'
-load 'settings.rb'
+load 'config.rb'
 
 bot = Discordrb::Commands::CommandBot.new token: configatron.token, type: :user, prefix: configatron.prefix, advanced_functionality: false, help_command: false, parse_self: true, help_available: false, debug: true, log_mode: :quiet
 
@@ -21,8 +20,6 @@ def remove
     end
   end
 end
-
-$embeds = true
 
 colors = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
   3306856, 9414906, 3717172, 14715195, 3813410, 9899000,
@@ -65,14 +62,14 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     eval args.join
   when 'embeds'
     if args.join(' ') == 'false'
-      file_names = ['settings.rb']
+      file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
         new_contents = text.gsub(/$embeds = /, "$embeds = false")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     elsif args.join(' ') == 'true'
-      file_names = ['settings.rb']
+      file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
         new_contents = text.gsub(/$embeds = false/, "$embeds = true")
