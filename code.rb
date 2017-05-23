@@ -63,18 +63,18 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
   when 'embeds'
     if args.join(' ') == 'false'
       load 'config.rb'
-      file_names = ['config.rb']
+      file_names = 'config.rb'
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/$embeds = /, "$embeds = false")
+        new_contents = text.gsub(/embeds = true/, "embeds = false")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     elsif args.join(' ') == 'true'
       load 'config.rb'
-      file_names = ['config.rb']
+      file_names = 'config.rb'
       file_names.each do |file_name|
         text = File.read(file_name)
-        new_contents = text.gsub(/$embeds = false/, "$embeds = true")
+        new_contents = text.gsub(/embeds = false/, "embeds = true")
         File.open(file_name, "w") { |file| file.puts new_contents }
       end
     else
