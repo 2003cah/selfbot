@@ -30,14 +30,10 @@ colors = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
   7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
 2582883, 13632200, 12690287, 14127493].sample
 
-<<<<<<< HEAD
-$embeds = true
-=======
 bot.ready do |event|
   bot.game = 'woahdude'
   $game = "woahdude"
 end
->>>>>>> 9849d1042c834f4e0f79b82b87b50f8b29d74ffb
 
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
   begin
@@ -68,11 +64,6 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
     eval args.join
   when 'embeds'
     if args.join(' ') == 'false'
-<<<<<<< HEAD
-      $embeds = false
-    elsif args.join(' ') == 'true'
-      $embeds = true
-=======
       file_names = ['config.rb']
       file_names.each do |file_name|
         text = File.read(file_name)
@@ -88,7 +79,6 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
       end
     else
       event.respond "Invalid value, try `true` or `false`"
->>>>>>> 9849d1042c834f4e0f79b82b87b50f8b29d74ffb
     end
   else
     event.message.edit "My apologies, but #{args.join(' ')} is not a valid setting, you can use `embeds`, `status`, `game`, or `avatar`"
@@ -126,17 +116,6 @@ bot.command(:esay, help_available: false, permission_message: false, permission_
 end
 
 bot.command(:die, help_available: false, permission_message: false, permission_level: 1) do |event|
-<<<<<<< HEAD
-  if $embeds == true
-    event.channel.send_embed do |e|
-      e.title = "#{configatron.prefix}die"
-      e.description = ':wave::skin-tone-1:'
-      e.color = colors
-    end
-    exit
-  else
-    event.respond ':wave::skin-tone-1:'
-=======
   if configatron.embeds == true
     event.channel.send_embed do |e|
       e.title = "#{configatron.prefix}die"
@@ -145,18 +124,12 @@ bot.command(:die, help_available: false, permission_message: false, permission_l
     end
   else
     bot.send_message(event.channel.id, ':wave::skin-tone-1:')
->>>>>>> 9849d1042c834f4e0f79b82b87b50f8b29d74ffb
     exit
   end
 end
 
 bot.command(:restart, help_available: false, permission_level: 1, permission_message: false) do |event|
-<<<<<<< HEAD
-  if $embeds == true
-    event.message.delete
-=======
   if configatron.embeds == true
->>>>>>> 9849d1042c834f4e0f79b82b87b50f8b29d74ffb
     begin
       event.channel.send_embed do |e|
         e.title = "#{configatron.prefix}restart"
@@ -165,22 +138,16 @@ bot.command(:restart, help_available: false, permission_level: 1, permission_mes
       end
       sleep 0.5
       exec("bash restart.sh")
-<<<<<<< HEAD
-=======
     rescue
       event.respond "Something bad happened, make sure there's a `restart.sh` file in the selfbot folder, if so, bug Cah about it"
->>>>>>> 9849d1042c834f4e0f79b82b87b50f8b29d74ffb
     end
   else
     begin
       event.message.edit ["Restarting selfbot...", "See you later :wave::skin-tone-1:!", "[sentence about restarting a bot]", "There was a 1 in 5 chance I would say this, cool beans", "nil."].sample
       sleep 0.5
       exec("bash restart.sh")
-<<<<<<< HEAD
-=======
     rescue
       event.respond "Something bad happened, make sure there's a `restart.sh` file in the selfbot folder, if so, bug Cah about it"
->>>>>>> 9849d1042c834f4e0f79b82b87b50f8b29d74ffb
     end
   end
 end
