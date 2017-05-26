@@ -101,7 +101,7 @@ bot.command(:get, help_available: false, permission_message: false, permission_l
     if !event.message.mentions.empty?
       if $embeds == true
         event.channel.send_embed do |e|
-          e.title "Some general info about #{mention.name}"
+          e.title = "Some general info about #{mention.name}"
           e.add_field(name: "ID", value: "`#{mention.id}`")
           e.add_field(name: "Distinct (username#0000)", value: "#{mention.distinct}")
           e.add_field(name: "Nickname", value: "#{mention.nick}")
