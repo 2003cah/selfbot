@@ -104,7 +104,7 @@ bot.command(:get, help_available: false, permission_message: false, permission_l
           e.title = "Some general info about #{mention.name}"
           e.add_field(name: "ID", value: "`#{mention.id}`")
           e.add_field(name: "Distinct (username#0000)", value: "#{mention.distinct}")
-          e.add_field(name: "Nickname", value: "#{mention.nick}")
+          e.add_field(name: "Nickname", value: "#{mention.on(event.server).nick}")
           e.add_field(name: "Game", value: "#{mention.game}")
           e.add_field(name: "Created On", value: "#{mention.creation_time}")
           e.add_field(name: "Joined This Server On", value: "#{mention.on(event.server).joined_at}")
@@ -114,7 +114,7 @@ bot.command(:get, help_available: false, permission_message: false, permission_l
         event.respond "__Some general info about #{mention.name}__
 ID: `#{mention.id}`
 Distinct (username#0000): `#{mention.distinct}`
-Nickname: `#{mention.nick}`
+Nickname: `#{mention.on(event.server).nick}`
 Game: `#{mention.game}`
 Created On: `#{mention.creation_time}`
 Joined This Server On: `#{mention.on(event.server).joined_at}`"
