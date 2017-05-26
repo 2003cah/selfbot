@@ -93,6 +93,54 @@ bot.command(:game, help_available: false, permission_message: false, permission_
   event.message.edit "#{configatron.name}, your current game status is `#{$game}`"
 end
 
+bot.command(:get, help_available: false, permission_message: false, permission_level: 1) do |event, action, *args|
+  load 'config.rb'
+  mention = bot.parse_mention("#{args.join (' ')}")
+  case action
+  when 'info'
+    if !event.message.mentions.empty?
+      if $embeds == true
+        event.channel.send_embed do |e|
+          e.title "Some general info about #{mention.name}"
+          e.add_field(name: "ID", value: "`#{mention.id}`")
+          e.add_field(name: "Distinct (username#0000)", value: "#{mention.distinct}")
+          e.add_field(name: "Nickname", value: "#{mention.nick}")
+          e.add_field(name: "Game", value: "#{mention.game}")
+          e.add_field(name: "Created On", value: "#{mention.creation_time}")
+          e.add_field(name: "Joined This Server On", value: "#{mention.on(event.server).joined_at}")
+          e.color = colors
+        end
+      else
+        event.respond "__Some general info about #{mention.name}__
+ID: `#{mention.id}`
+Distinct (username#0000): `#{mention.distinct}`
+Nickname: `#{mention.nick}`
+Game: `#{mention.game}`
+Created On: `#{mention.creation_time}`
+Joined This Server On: `#{mention.on(event.server).joined_at}`"
+      end
+    else
+      event.respond "Sorry, you have you actually *mention* the person you want to get info for"
+    end
+  when 'id'
+    if !event.message.mentions.empty?
+      if $embeds == true
+        event.channel.send_embed do |e|
+          e.title = "User ID for #{mention.name}"
+          e.description = "#{mention.id}"
+          e.color = colors
+        end
+      else
+        event.respond "User ID for #{mention.name}: #{mention.id}"
+      end
+    else
+      event.respond "Sorry, you have to actually *mention* the person you want to get the ID for"
+    end
+  else
+    event.respond "Uh oh, that's not a valid thing to get, currently you can get `info` or `id`"
+  end
+end
+
 bot.command(:me, help_available: false, permission_message: false, permission_level: 1) do |event, *args|
   event.channel.send_embed do |embed|
     event.message.delete
