@@ -36,12 +36,12 @@ end
 bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event|
   begin
     event.message.edit "Input: ```rb
-#{event.message.content[configatron.prefix.size + 4..-1]}```
+#{event.message.content[configatron.prefix.size + 5..-1]}```
 Output:
-```#{eval event.message.content[configatron.prefix.size + 4..-1]}```"
+```#{eval event.message.content[configatron.prefix.size + 5..-1]}```"
   rescue => e
     event.message.edit "Input: ```rb
-#{event.message.content[configatron.prefix.size + 4..-1]}```
+#{event.message.content[configatron.prefix.size + 5..-1]}```
 Output:
 ```#{e}```"
   end
