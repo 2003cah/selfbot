@@ -33,13 +33,15 @@ bot.ready do |event|
   $game = "woahdude"
 end
 
-bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event, *code|
+bot.command(:eval, help_available: false, permission_message: false, permission_level: 1) do |event|
   begin
-    event.message.edit "Input: `#{code.join(' ')}`
+    event.message.edit "Input: ```rb
+#{event.message.content[configatron.prefix.size + 4..-1]}```
 Output:
-```#{eval code.join(' ')}```"
+```#{eval event.message.content[configatron.prefix.size + 4..-1]}```"
   rescue => e
-    event.message.edit "Input: `#{code.join(' ')}`
+    event.message.edit "Input: ```rb
+#{event.message.content[configatron.prefix.size + 4..-1]}```
 Output:
 ```#{e}```"
   end
