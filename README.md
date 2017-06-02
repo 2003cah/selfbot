@@ -52,6 +52,8 @@ configatron.token = 'mfa.YoUr-T_oKen.HEre'
 configatron.prefix = 'Your Prefered Prefix'
 configatron.name = 'Your username, or whatever you want the selfbot to call you'
 configatron.id = 'In order for the selfbot to properly work, place your User ID here'
+$embeds = true
+# set $embeds to true or false so everything runs buttery smooth
 ```
 in it, obviously putting in your token & stuff into their respective places.
 
