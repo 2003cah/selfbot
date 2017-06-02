@@ -61,7 +61,7 @@ Wait, you don't know how to get your user token? No probalo
 
 To make sure I don't make this super long, here's the short version how
 
-Ctrl+Shift+I on Discord, click the double >, Application, scroll down, bam    
+Ctrl+Shift+I on Discord, click the double >, Application, click "Local Storage", then the only thing there, scroll down, bam    
 ![bam](http://owo.whats-th.is/65d43d.png)    
 
 **Step 5.** Provided that you did everything right, you should be able to `ruby code.rb` in your console and watch it connect :thumbsup:
