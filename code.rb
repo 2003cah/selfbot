@@ -28,6 +28,9 @@ colors = [11736341, 3093151, 2205818, 2353205, 12537412, 12564286,
   7701739, 8312810, 13798754, 15453783, 12107214, 9809797,
 2582883, 13632200, 12690287, 14127493].sample
 
+vapeS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890=+!@#$%&*():;',.?/ "
+vapeE = "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ１２３４５６７８９０＝＋！＠＃＄％＆＊（）：；＇，．？／　"
+
 bot.ready do |event|
   bot.game = 'woahdude'
   $game = "woahdude"
@@ -290,6 +293,10 @@ bot.command(:roll, help_available: false, max_args: 0, permission_level: 1, perm
   event.message.edit "#{configatron.name} rolled a die and got a... **#{rand(1..6)}!**"
 end
 
+bot.command([:vape, :vapor], help_available: false, permission_message: false, permission_level: 1) do |event, *args|
+  event.message.edit "#{args.join(' ').tr(vapeS, vapeE)}"
+end
+
 bot.command([:cmds, :commands, :help], help_available: false, permission_message: false, permission_level: 1, max_args: 0) do |event|
   load 'config.rb'
   if $embeds == true
@@ -306,7 +313,8 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}quote <messageid>: Quotes a message, using an embed format
 #{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works
 #{configatron.prefix}roll: Roll a die (Picks a number from 1 through 6)
-#{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
+#{configatron.prefix}flip: Flip a coin (Picks heads or tails)
+#{configatron.prefix}vapor: ｍ ｅ ｍ ｅ ｓ"
       e.color = colors
     end
   else
@@ -322,7 +330,8 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
 #{configatron.prefix}quote <messageid>: Quotes a message, using an embed format
 #{configatron.prefix}set <avatar | game | status> <args>: Sets some stuff, still in the works
 #{configatron.prefix}roll: Roll a die (Picks a number from 1 through 6)
-#{configatron.prefix}flip: Flip a coin (Picks heads or tails)"
+#{configatron.prefix}flip: Flip a coin (Picks heads or tails)
+#{configatron.prefix}vapor: ｍ ｅ ｍ ｅ ｓ"
   end
 end
 
