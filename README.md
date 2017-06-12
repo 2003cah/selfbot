@@ -14,4 +14,5 @@ We have a [wiki page](https://github.com/2003cah/selfbot/wiki/Installing) for th
 1. Create a fork
 2. Commit your changes onto a tubular branch
 3. Create a PR   
+
 Please check in with me first before adding anything, I'd like to know if and when a thing will be PR'd instead of "surprise, here's a feature you may or may not want"
