@@ -335,6 +335,6 @@ bot.command([:cmds, :commands, :help], help_available: false, permission_message
   end
 end
 
-# whatever I'll finish it later
+# knowing me I probably need to fix everything
 
 bot.run
