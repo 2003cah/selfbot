@@ -58,7 +58,7 @@ bot.command(:set, help_available: false, permission_message: false, permission_l
   when 'game'
     bot.game = "#{args.join(' ')}"
     $game = "#{args.join(' ')}"
-    event.message.edit "Game set to: `#{args.join(' ')}`"
+    event.message.edit "Game set to `#{args.join(' ')}`"
   when 'status'
     online = bot.on
     idle = bot.idle
